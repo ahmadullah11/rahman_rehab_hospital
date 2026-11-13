@@ -2,13 +2,9 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { useCart } from '@/context/CartContext';
-import { useAuth } from '@/context/AuthContext';
 import { HOSPITAL } from '@/lib/site';
 
 export default function Navbar() {
-  const { totalItems } = useCart();
-  const { user } = useAuth();
   const [theme, setTheme] = useState<'light' | 'dark'>('light');
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -81,24 +77,6 @@ export default function Navbar() {
               </svg>
             )}
           </button>
-
-          {/* Cart button */}
-          <Link href="/cart" className="icon-btn" aria-label="Shopping Cart">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-              <circle cx="9" cy="21" r="1" />
-              <circle cx="20" cy="21" r="1" />
-              <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
-            </svg>
-            {totalItems > 0 && <span className="badge-count">{totalItems}</span>}
-          </Link>
-
-          {/* User Profile / Auth */}
-          <Link href={user ? '/profile' : '/login'} className="icon-btn" aria-label="User account">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
-              <circle cx="12" cy="7" r="4" />
-            </svg>
-          </Link>
 
           {/* CTA */}
           <Link href="/#contact" className="btn btn-primary nav-cta-desktop">

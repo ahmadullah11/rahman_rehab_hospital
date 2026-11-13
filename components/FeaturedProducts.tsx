@@ -1,20 +1,7 @@
-'use client';
-
-import { useState } from 'react';
 import Link from 'next/link';
-import { INITIAL_PRODUCTS, ProductItem } from '@/lib/constants';
-import { useCart } from '@/context/CartContext';
+import { INITIAL_PRODUCTS } from '@/lib/constants';
 
 export default function FeaturedProducts() {
-  const { addToCart } = useCart();
-  const [addedId, setAddedId] = useState<string | null>(null);
-
-  const handleAdd = (p: ProductItem) => {
-    addToCart(p, 1);
-    setAddedId(p._id);
-    setTimeout(() => setAddedId(null), 1500);
-  };
-
   return (
     <section id="store-preview">
       <div className="container">
@@ -42,13 +29,9 @@ export default function FeaturedProducts() {
                     <Link href={`/products/${prod._id}`} className="btn btn-ghost btn-sm">
                       Details
                     </Link>
-                    <button
-                      type="button"
-                      className="btn btn-primary btn-sm"
-                      onClick={() => handleAdd(prod)}
-                    >
-                      {addedId === prod._id ? 'Added ✓' : 'Add to Cart'}
-                    </button>
+                    <Link href="/#contact" className="btn btn-primary btn-sm">
+                      Get Help
+                    </Link>
                   </div>
                 </div>
               </div>

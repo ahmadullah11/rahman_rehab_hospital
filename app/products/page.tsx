@@ -4,7 +4,6 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { ProductItem } from '@/lib/constants';
 import { getProductsAction } from '@/app/actions/products';
-import { useCart } from '@/context/CartContext';
 
 export default function ProductsPage() {
   const [products, setProducts] = useState<ProductItem[]>([]);
@@ -12,8 +11,6 @@ export default function ProductsPage() {
   const [category, setCategory] = useState<string>('All');
   const [search, setSearch] = useState<string>('');
   const [sortBy, setSortBy] = useState<string>('recommended');
-  const [addedId, setAddedId] = useState<string | null>(null);
-  const { addToCart } = useCart();
 
   useEffect(() => {
     async function load() {
@@ -47,12 +44,6 @@ export default function ProductsPage() {
       if (sortBy === 'price-high') return b.price - a.price;
       return 0;
     });
-
-  const handleAddToCart = (p: ProductItem) => {
-    addToCart(p, 1);
-    setAddedId(p._id);
-    setTimeout(() => setAddedId(null), 1500);
-  };
 
   return (
     <div style={{ paddingTop: '2.5rem', paddingBottom: '5rem' }}>
@@ -145,13 +136,9 @@ export default function ProductsPage() {
                       <Link href={`/products/${item._id}`} className="btn btn-ghost btn-sm">
                         Details
                       </Link>
-                      <button
-                        type="button"
-                        className="btn btn-primary btn-sm"
-                        onClick={() => handleAddToCart(item)}
-                      >
-                        {addedId === item._id ? 'Added ✓' : 'Add to Cart'}
-                      </button>
+                      <Link href="/#contact" className="btn btn-primary btn-sm">
+                        Get Help
+                      </Link>
                     </div>
                   </div>
                 </div>

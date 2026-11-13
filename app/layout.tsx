@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import { AuthProvider } from '@/context/AuthContext';
-import { CartProvider } from '@/context/CartContext';
 import ProgressBar from '@/components/ProgressBar';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -37,12 +36,10 @@ export default function RootLayout({
       </head>
       <body>
         <AuthProvider>
-          <CartProvider>
-            <ProgressBar />
-            <Navbar />
-            <main>{children}</main>
-            <Footer />
-          </CartProvider>
+          <ProgressBar />
+          <Navbar />
+          <main>{children}</main>
+          <Footer />
         </AuthProvider>
       </body>
     </html>

@@ -1,20 +1,15 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { useParams, useRouter } from 'next/navigation';
+import { useParams } from 'next/navigation';
 import Link from 'next/link';
 import { ProductItem } from '@/lib/constants';
 import { getProductByIdAction } from '@/app/actions/products';
-import { useCart } from '@/context/CartContext';
 
 export default function ProductDetailPage() {
   const params = useParams();
-  const router = useRouter();
-  const { addToCart } = useCart();
   const [product, setProduct] = useState<ProductItem | null>(null);
   const [loading, setLoading] = useState(true);
-  const [quantity, setQuantity] = useState(1);
-  const [added, setAdded] = useState(false);
 
   useEffect(() => {
     async function load() {
@@ -52,17 +47,6 @@ export default function ProductDetailPage() {
       </div>
     );
   }
-
-  const handleAdd = () => {
-    addToCart(product, quantity);
-    setAdded(true);
-    setTimeout(() => setAdded(false), 2000);
-  };
-
-  const handleBuyNow = () => {
-    addToCart(product, quantity);
-    router.push('/checkout');
-  };
 
   return (
     <div style={{ padding: '4rem 0 6rem' }}>
@@ -118,44 +102,14 @@ export default function ProductDetailPage() {
               </div>
             )}
 
-            {/* Quantity Selector */}
-            <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '2rem' }}>
-              <label style={{ fontWeight: 500 }}>Quantity / Patients:</label>
-              <div style={{ display: 'inline-flex', alignItems: 'center', border: '1px solid var(--border)', borderRadius: '10px', background: 'var(--surface)' }}>
-                <button
-                  type="button"
-                  style={{ border: 'none', background: 'none', padding: '.5rem .9rem', cursor: 'pointer', fontSize: '1.1rem' }}
-                  onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                >
-                  -
-                </button>
-                <span style={{ padding: '0 .6rem', fontWeight: 600 }}>{quantity}</span>
-                <button
-                  type="button"
-                  style={{ border: 'none', background: 'none', padding: '.5rem .9rem', cursor: 'pointer', fontSize: '1.1rem' }}
-                  onClick={() => setQuantity(quantity + 1)}
-                >
-                  +
-                </button>
-              </div>
-            </div>
-
             {/* Action buttons */}
             <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
-              <button
-                type="button"
-                className="btn btn-primary"
-                onClick={handleAdd}
-              >
-                {added ? 'Added to Cart ✓' : 'Add to Cart'}
-              </button>
-              <button
-                type="button"
-                className="btn btn-ghost"
-                onClick={handleBuyNow}
-              >
-                Enroll / Buy Now
-              </button>
+              <Link href="/#contact" className="btn btn-primary">
+                Book a Consultation
+              </Link>
+              <Link href="/products" className="btn btn-ghost">
+                View All Programs
+              </Link>
             </div>
 
             {/* Security Guarantee */}
