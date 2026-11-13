@@ -1,24 +1,24 @@
 export default function Team() {
   const members = [
     {
-      initials: 'SA',
-      name: 'Dr. Sarah Ahmed',
-      role: 'Medical Director',
-      bio: 'Board-certified in addiction medicine with 15 years of clinical experience.',
+      initials: 'AR',
+      name: 'Anayat Ur Rahman',
+      role: 'Managing Director',
+      bio: 'Leads the hospital’s mission, admissions and patient-care standards across both branches.',
       delay: '0s'
     },
     {
-      initials: 'JM',
-      name: 'Dr. James Mitchell',
-      role: 'Lead Psychologist',
-      bio: 'Specializes in trauma-informed care and co-occurring mental health conditions.',
+      initials: 'AH',
+      name: 'Dr. Asif Hussain',
+      role: 'Consultant Psychiatrist',
+      bio: 'Psychiatric assessment, medication management and dual-diagnosis care for adults.',
       delay: '.1s'
     },
     {
-      initials: 'EL',
-      name: 'Elena Lopez, LCSW',
-      role: 'Family Program Lead',
-      bio: 'Helps families heal together through education, communication, and support.',
+      initials: 'TH',
+      name: 'Ms. Tania Hameed',
+      role: 'Clinical Psychologist',
+      bio: 'Cognitive behavioural therapy, relapse prevention and family counselling.',
       delay: '.2s'
     }
   ];
@@ -34,7 +34,7 @@ export default function Team() {
         <div className="team">
           {members.map((m, idx) => (
             <div key={idx} className="member reveal" style={{ ['--d' as any]: m.delay }}>
-              <div className="avatar">{m.initials}</div>
+              <div className="avatar" aria-hidden="true">{m.initials}</div>
               <h3>{m.name}</h3>
               <div className="role">{m.role}</div>
               <p>{m.bio}</p>

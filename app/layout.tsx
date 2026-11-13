@@ -7,8 +7,9 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
-  title: 'Verdant Path | Rehabilitation & Recovery Center',
-  description: 'Compassionate, evidence-based addiction treatment and recovery support. Confidential help, 24/7.',
+  title: 'Rahman Rehab | Rehabilitation & Psychiatry Treatment Hospital',
+  description:
+    'Rahman Rehab & Psychiatry Treatment Hospital offers evidence-based addiction treatment, psychiatric care and rehabilitation in Peshawar and Matta, Swat. Admissions open 24/7.',
   icons: {
     icon: 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none" stroke="%232f6b4f" stroke-width="2"><path d="M16 29V14"/><path d="M16 18c-5 0-9-3.5-9-9 5 0 9 3.5 9 9z"/><path d="M16 14c0-5 3.5-9 9-9 0 5-3.5 9-9 9z"/></svg>'
   }

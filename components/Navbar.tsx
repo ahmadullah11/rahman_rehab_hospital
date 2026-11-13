@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useCart } from '@/context/CartContext';
 import { useAuth } from '@/context/AuthContext';
+import { HOSPITAL } from '@/lib/site';
 
 export default function Navbar() {
   const { totalItems } = useCart();
@@ -38,19 +39,20 @@ export default function Navbar() {
   return (
     <header className={`nav ${scrolled ? 'scrolled' : ''}`} id="nav">
       <div className="container nav-inner">
-        <Link href="/" className="logo" aria-label="Verdant Path home" onClick={closeMenu}>
-          <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" strokeLinecap="round" strokeLinejoin="round">
+        <Link href="/" className="logo" aria-label={`${HOSPITAL.fullName} home`} onClick={closeMenu}>
+          <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
             <path d="M16 29V14" />
             <path d="M16 18c-5 0-9-3.5-9-9 5 0 9 3.5 9 9z" />
             <path d="M16 14c0-5 3.5-9 9-9 0 5-3.5 9-9 9z" />
           </svg>
-          Verdant Path
+          {HOSPITAL.name}
         </Link>
 
         <nav className={`nav-links ${menuOpen ? 'open' : ''}`} id="navLinks" aria-label="Main navigation">
           <Link href="/#about" onClick={closeMenu}>About</Link>
           <Link href="/#programs" onClick={closeMenu}>Programs</Link>
           <Link href="/#journey" onClick={closeMenu}>Journey</Link>
+          <Link href="/#branches" onClick={closeMenu}>Branches</Link>
           <Link href="/#team" onClick={closeMenu}>Team</Link>
           <Link href="/#stories" onClick={closeMenu}>Stories</Link>
           <Link href="/products" onClick={closeMenu}>Store</Link>

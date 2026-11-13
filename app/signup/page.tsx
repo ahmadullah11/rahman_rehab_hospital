@@ -45,7 +45,7 @@ export default function SignupPage() {
         <div className="section-head center" style={{ marginBottom: '2rem' }}>
           <span className="eyebrow">Patient Registration</span>
           <h2>Create Your Account</h2>
-          <p>Join the Verdant Path network for confidential admissions and recovery support.</p>
+          <p>Join the Rahman Rehab patient network for confidential admissions and recovery support.</p>
         </div>
 
         <form className="verdant-form" style={{ gridTemplateColumns: '1fr' }} onSubmit={handleSubmit}>

@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { CONTACT, toTel } from '@/lib/site';
 
 export default function Hero() {
   return (
@@ -6,7 +7,7 @@ export default function Hero() {
       <div className="container hero-grid">
         <div>
           <span className="eyebrow rise" style={{ animationDelay: '.05s' }}>
-            Rehabilitation &amp; Recovery Center
+            Rehabilitation &amp; Psychiatric Care
           </span>
           <h1 className="rise" style={{ animationDelay: '.15s' }}>
             Recovery begins with <em>one</em> quiet step.
@@ -33,7 +34,9 @@ export default function Hero() {
             </div>
             <div>
               24/7 confidential helpline
-              <strong>+1 (800) 555-0142</strong>
+              <a href={`tel:${toTel(CONTACT.phones[0])}`} className="helpline-number">
+                {CONTACT.phones[0]}
+              </a>
             </div>
           </div>
         </div>

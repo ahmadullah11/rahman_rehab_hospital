@@ -32,7 +32,7 @@ export default function Journey() {
         <div className="section-head reveal">
           <span className="eyebrow">Your Journey</span>
           <h2>A clear path, one step at a time</h2>
-          <p>Knowing what to expect makes starting easier. Here is how recovery works at Verdant Path.</p>
+          <p>Knowing what to expect makes starting easier. Here is how recovery works at Rahman Rehab.</p>
         </div>
         <div className="steps">
           {steps.map((s, idx) => (

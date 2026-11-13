@@ -19,9 +19,9 @@ export default function FeaturedProducts() {
     <section id="store-preview">
       <div className="container">
         <div className="section-head center reveal">
-          <span className="eyebrow">Treatment Packages &amp; Care</span>
-          <h2>Direct Inpatient &amp; Outpatient Enrollment</h2>
-          <p>Transparent programs, clinical evaluations, and evidence-based wellness care.</p>
+          <span className="eyebrow">Treatment Packages</span>
+          <h2>Care packages with clear, upfront pricing</h2>
+          <p>Every plan includes a clinical assessment, a personalised treatment plan, and direct admission support.</p>
         </div>
 
         <div className="cards">

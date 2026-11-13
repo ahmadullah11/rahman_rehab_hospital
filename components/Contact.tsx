@@ -1,6 +1,8 @@
 'use client';
 
 import { useState } from 'react';
+import { BRANCHES, CONTACT, mapsUrl, toTel } from '@/lib/site';
+import SocialLinks from '@/components/SocialLinks';
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -55,6 +57,7 @@ export default function Contact() {
               <h2>You don’t have to do this alone.</h2>
               <p style={{ marginTop: '.8rem' }}>Reach out today. Every conversation is private and without obligation.</p>
             </div>
+
             <div className="info-row">
               <div className="ic">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
@@ -63,9 +66,14 @@ export default function Contact() {
               </div>
               <div>
                 <small>Call anytime</small>
-                <span>+1 (800) 555-0142</span>
+                <span className="info-links">
+                  {CONTACT.phones.map((phone) => (
+                    <a key={phone} href={`tel:${toTel(phone)}`}>{phone}</a>
+                  ))}
+                </span>
               </div>
             </div>
+
             <div className="info-row">
               <div className="ic">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
@@ -75,9 +83,12 @@ export default function Contact() {
               </div>
               <div>
                 <small>Email</small>
-                <span>care@verdantpath.com</span>
+                <span className="info-links">
+                  <a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a>
+                </span>
               </div>
             </div>
+
             <div className="info-row">
               <div className="ic">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
@@ -86,10 +97,45 @@ export default function Contact() {
                 </svg>
               </div>
               <div>
-                <small>Location</small>
-                <span>120 Cedar Lane, Greenfield</span>
+                <small>Our branches</small>
+                {BRANCHES.map((branch) => (
+                  <span key={branch.id} className="info-branch">
+                    <a
+                      href={mapsUrl(branch.mapQuery)}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="info-branch-label"
+                    >
+                      {branch.city}{branch.primary ? ' · Main' : ''}
+                    </a>
+                    <span>{branch.address}</span>
+                  </span>
+                ))}
               </div>
             </div>
+
+            <div className="info-row">
+              <div className="ic">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                  <circle cx="12" cy="12" r="9" />
+                  <path d="M12 7v5l3 2" />
+                </svg>
+              </div>
+              <div>
+                <small>Hours</small>
+                <span className="info-hours">
+                  <span className="dot-live" aria-hidden="true" />
+                  {CONTACT.hours}
+                  <span className="info-hours-note">· {CONTACT.hoursDetail}</span>
+                </span>
+              </div>
+            </div>
+
+            <div className="info-social">
+              <span>Follow our updates</span>
+              <SocialLinks onDark />
+            </div>
+
             <p className="notice">If you or someone you know is in immediate danger, please call your local emergency number right away.</p>
           </div>
 
@@ -110,7 +156,7 @@ export default function Contact() {
               <input
                 id="phone"
                 type="tel"
-                placeholder="+1 000 000 0000"
+                placeholder="0300 0000000"
                 value={formData.phone}
                 onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
               />

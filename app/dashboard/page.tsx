@@ -100,7 +100,7 @@ export default function DashboardPage() {
                 <path d="M16 18c-5 0-9-3.5-9-9 5 0 9 3.5 9 9z" />
                 <path d="M16 14c0-5 3.5-9 9-9 0 5-3.5 9-9 9z" />
               </svg>
-              Verdant Path Admin
+              Rahman Rehab Admin
             </Link>
             <span className="text-xs px-2.5 py-1 rounded-full bg-[var(--soft)] text-[var(--primary)] font-semibold">
               CRUD &amp; KPI Portal

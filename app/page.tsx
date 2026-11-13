@@ -3,8 +3,8 @@ import Stats from '@/components/Stats';
 import About from '@/components/About';
 import Programs from '@/components/Programs';
 import Journey from '@/components/Journey';
-import FeaturedProducts from '@/components/FeaturedProducts';
 import GallerySection from '@/components/GallerySection';
+import Branches from '@/components/Branches';
 import Team from '@/components/Team';
 import Stories from '@/components/Stories';
 import Faq from '@/components/Faq';
@@ -18,8 +18,8 @@ export default function HomePage() {
       <About />
       <Programs />
       <Journey />
-      <FeaturedProducts />
       <GallerySection />
+      <Branches />
       <Team />
       <Stories />
       <Faq />

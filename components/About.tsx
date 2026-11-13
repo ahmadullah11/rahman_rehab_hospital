@@ -6,7 +6,7 @@ export default function About() {
           <span className="eyebrow">About Us</span>
           <h2>Care that treats the person, not just the condition.</h2>
           <p>
-            Verdant Path was founded on a simple belief: lasting recovery grows in an environment of safety, dignity, and trust. Every program is designed around the individual, never a one-size-fits-all plan.
+            Rahman Rehab was founded on a simple belief: lasting recovery grows in an environment of safety, dignity, and trust. Every program is designed around the individual, never a one-size-fits-all plan.
           </p>
           <p>
             Set within calm, private grounds, our center combines clinical excellence with a warm, human approach, so you can focus on what matters most: getting well.
