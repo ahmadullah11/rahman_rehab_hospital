@@ -89,7 +89,7 @@ export default function ProfilePage() {
           </div>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '3rem', alignItems: 'start' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 320px), 1fr))', gap: 'clamp(2rem, 5vw, 3rem)', alignItems: 'start' }}>
           {/* Profile Details Form */}
           <div style={{ background: 'var(--surface)', borderRadius: 'var(--radius)', border: '1px solid var(--border)', padding: '2rem', boxShadow: 'var(--shadow)' }}>
             <h3 style={{ fontSize: '1.3rem', marginBottom: '1.5rem' }}>Personal Information</h3>

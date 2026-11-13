@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { HOSPITAL } from '@/lib/site';
 
@@ -8,6 +8,7 @@ export default function Navbar() {
   const [theme, setTheme] = useState<'light' | 'dark'>('light');
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const navRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     const saved = localStorage.getItem('theme') as 'light' | 'dark' | null;
@@ -32,8 +33,47 @@ export default function Navbar() {
 
   const closeMenu = () => setMenuOpen(false);
 
+  /* Close the drawer on outside tap, Escape, or when the desktop nav returns. */
+  useEffect(() => {
+    if (!menuOpen) return;
+
+    const onPointerDown = (e: PointerEvent) => {
+      if (navRef.current && !navRef.current.contains(e.target as Node)) {
+        setMenuOpen(false);
+      }
+    };
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setMenuOpen(false);
+    };
+    const onResize = () => {
+      if (window.innerWidth >= 1024) setMenuOpen(false);
+    };
+
+    document.addEventListener('pointerdown', onPointerDown);
+    document.addEventListener('keydown', onKeyDown);
+    window.addEventListener('resize', onResize);
+
+    return () => {
+      document.removeEventListener('pointerdown', onPointerDown);
+      document.removeEventListener('keydown', onKeyDown);
+      window.removeEventListener('resize', onResize);
+    };
+  }, [menuOpen]);
+
+  /* Keep the page behind the open drawer from scrolling. */
+  useEffect(() => {
+    if (!menuOpen) return;
+
+    const previous = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+
+    return () => {
+      document.body.style.overflow = previous;
+    };
+  }, [menuOpen]);
+
   return (
-    <header className={`nav ${scrolled ? 'scrolled' : ''}`} id="nav">
+    <header className={`nav ${scrolled ? 'scrolled' : ''}`} id="nav" ref={navRef}>
       <div className="container nav-inner">
         <Link href="/" className="logo" aria-label={`${HOSPITAL.fullName} home`} onClick={closeMenu}>
           <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">

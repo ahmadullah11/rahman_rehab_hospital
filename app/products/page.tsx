@@ -88,18 +88,18 @@ export default function ProductsPage() {
           </div>
 
           {/* Search & Sort */}
-          <div style={{ display: 'flex', gap: '.75rem', flexWrap: 'wrap', flex: 1, justifyContent: 'flex-end', minWidth: '280px' }}>
+          <div style={{ display: 'flex', gap: '.75rem', flexWrap: 'wrap', flex: '1 1 220px', justifyContent: 'flex-end', minWidth: 0 }}>
             <input
               type="text"
               placeholder="Search treatments..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              style={{ maxWidth: '240px', padding: '.5rem .85rem', fontSize: '.9rem' }}
+              style={{ maxWidth: '240px', flex: '1 1 160px', padding: '.55rem .85rem', fontSize: '1rem' }}
             />
             <select
               value={sortBy}
               onChange={(e) => setSortBy(e.target.value)}
-              style={{ maxWidth: '180px', padding: '.5rem .85rem', fontSize: '.9rem' }}
+              style={{ maxWidth: '190px', flex: '1 1 160px', padding: '.55rem .85rem', fontSize: '1rem' }}
             >
               <option value="recommended">Sort by: Recommended</option>
               <option value="price-low">Price: Low to High</option>

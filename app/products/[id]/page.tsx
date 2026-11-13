@@ -56,7 +56,7 @@ export default function ProductDetailPage() {
           <Link href="/">Home</Link> &gt; <Link href="/products">Store</Link> &gt; <span style={{ color: 'var(--text)' }}>{product.title}</span>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '3.5rem', alignItems: 'start' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 320px), 1fr))', gap: 'clamp(2rem, 5vw, 3.5rem)', alignItems: 'start' }}>
           {/* Image */}
           <div
             style={{
@@ -79,7 +79,7 @@ export default function ProductDetailPage() {
             <span className="badge-pill" style={{ position: 'static', display: 'inline-block', marginBottom: '1rem' }}>
               {product.category}
             </span>
-            <h1 style={{ fontSize: '2.4rem', marginBottom: '1rem' }}>{product.title}</h1>
+            <h1 style={{ fontSize: 'clamp(1.8rem, 5vw, 2.4rem)', marginBottom: '1rem' }}>{product.title}</h1>
             <div className="product-price" style={{ fontSize: '2rem', marginBottom: '1.5rem' }}>
               ${product.price}
             </div>
