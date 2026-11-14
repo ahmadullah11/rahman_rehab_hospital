@@ -41,9 +41,9 @@ export async function getDb(): Promise<Db> {
   return connectedClient.db(dbName);
 }
 
-import { ProductItem, OrderItem, INITIAL_PRODUCTS, DEFAULT_GALLERY_IMAGES, GalleryItem } from "./constants";
+import { DEFAULT_GALLERY_IMAGES, GalleryItem } from "./constants";
 
-export { type ProductItem, type OrderItem, INITIAL_PRODUCTS, DEFAULT_GALLERY_IMAGES, type GalleryItem };
+export { DEFAULT_GALLERY_IMAGES, type GalleryItem };
 
 export interface UserRecord {
   _id: string;
@@ -79,8 +79,6 @@ export interface EnquiryRecord {
 
 // In-Memory Fallback Store (Ensures everything runs smoothly before MongoDB credentials are added)
 export const memoryStore = {
-  products: [...INITIAL_PRODUCTS],
-  orders: [] as OrderItem[],
   users: [
     {
       _id: "usr_admin_1",

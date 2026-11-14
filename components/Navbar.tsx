@@ -91,7 +91,6 @@ export default function Navbar() {
           <Link href="/#branches" onClick={closeMenu}>Branches</Link>
           <Link href="/#team" onClick={closeMenu}>Team</Link>
           <Link href="/#stories" onClick={closeMenu}>Stories</Link>
-          <Link href="/products" onClick={closeMenu}>Store</Link>
           <Link href="/#faq" onClick={closeMenu}>FAQ</Link>
           <Link href="/#contact" className="btn btn-primary nav-cta-mobile" onClick={closeMenu}>
             Get Confidential Help

@@ -5,14 +5,10 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { useAuth } from '@/context/AuthContext';
 import { updateProfileAction } from '@/app/actions/auth';
-import { getUserOrdersAction } from '@/app/actions/orders';
-import { OrderItem } from '@/lib/constants';
 
 export default function ProfilePage() {
   const router = useRouter();
   const { user, loading: authLoading, logout } = useAuth();
-  const [orders, setOrders] = useState<OrderItem[]>([]);
-  const [loadingOrders, setLoadingOrders] = useState(true);
 
   // Profile form state
   const [name, setName] = useState('');
@@ -29,13 +25,6 @@ export default function ProfilePage() {
 
     if (user) {
       setName(user.name || '');
-      // Fetch user's orders
-      getUserOrdersAction(user._id).then((res) => {
-        if (res.success && res.orders) {
-          setOrders(res.orders);
-        }
-        setLoadingOrders(false);
-      });
     }
   }, [user, authLoading, router]);
 
@@ -89,7 +78,7 @@ export default function ProfilePage() {
           </div>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 320px), 1fr))', gap: 'clamp(2rem, 5vw, 3rem)', alignItems: 'start' }}>
+        <div style={{ display: 'grid', gap: 'clamp(2rem, 5vw, 3rem)', maxWidth: '640px' }}>
           {/* Profile Details Form */}
           <div style={{ background: 'var(--surface)', borderRadius: 'var(--radius)', border: '1px solid var(--border)', padding: '2rem', boxShadow: 'var(--shadow)' }}>
             <h3 style={{ fontSize: '1.3rem', marginBottom: '1.5rem' }}>Personal Information</h3>
@@ -145,69 +134,6 @@ export default function ProfilePage() {
                 {updating ? 'Saving Changes...' : 'Save Profile Changes'}
               </button>
             </form>
-          </div>
-
-          {/* Past Orders / Inpatient Enrolments */}
-          <div style={{ background: 'var(--surface)', borderRadius: 'var(--radius)', border: '1px solid var(--border)', padding: '2rem', boxShadow: 'var(--shadow)' }}>
-            <h3 style={{ fontSize: '1.3rem', marginBottom: '1.5rem' }}>Your Enrolled Care Plans ({orders.length})</h3>
-
-            {loadingOrders ? (
-              <p style={{ color: 'var(--muted)' }}>Loading orders...</p>
-            ) : orders.length === 0 ? (
-              <div>
-                <p style={{ color: 'var(--muted)', marginBottom: '1.5rem' }}>You have not enrolled in any programs yet.</p>
-                <Link href="/products" className="btn btn-ghost btn-sm">
-                  Browse Packages
-                </Link>
-              </div>
-            ) : (
-              <div style={{ display: 'grid', gap: '1.2rem' }}>
-                {orders.map((ord) => (
-                  <div
-                    key={ord._id}
-                    style={{
-                      border: '1px solid var(--border)',
-                      borderRadius: '12px',
-                      padding: '1.2rem',
-                      background: 'var(--bg)'
-                    }}
-                  >
-                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '.8rem' }}>
-                      <span style={{ fontSize: '.82rem', color: 'var(--muted)' }}>
-                        Order #{ord._id.slice(-6).toUpperCase()} • {new Date(ord.createdAt).toLocaleDateString()}
-                      </span>
-                      <span
-                        style={{
-                          fontSize: '.75rem',
-                          padding: '.2rem .6rem',
-                          borderRadius: '999px',
-                          textTransform: 'uppercase',
-                          fontWeight: 600,
-                          background: ord.status === 'delivered' ? 'var(--soft)' : 'var(--bg-alt)',
-                          color: 'var(--primary)'
-                        }}
-                      >
-                        {ord.status}
-                      </span>
-                    </div>
-
-                    <div style={{ display: 'grid', gap: '.5rem', marginBottom: '.8rem' }}>
-                      {ord.items.map((it, idx) => (
-                        <div key={idx} style={{ display: 'flex', justifyContent: 'space-between', fontSize: '.9rem' }}>
-                          <span>{it.title} × {it.quantity}</span>
-                          <strong>${(it.price * it.quantity).toLocaleString()}</strong>
-                        </div>
-                      ))}
-                    </div>
-
-                    <div style={{ display: 'flex', justifyContent: 'space-between', borderTop: '1px solid var(--border)', paddingTop: '.6rem', fontSize: '.95rem' }}>
-                      <span style={{ color: 'var(--muted)' }}>Total Amount:</span>
-                      <strong style={{ color: 'var(--primary)' }}>${ord.totalAmount.toLocaleString()}</strong>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            )}
           </div>
         </div>
       </div>
