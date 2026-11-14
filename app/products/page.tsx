@@ -99,7 +99,8 @@ export default function ProductsPage() {
             <select
               value={sortBy}
               onChange={(e) => setSortBy(e.target.value)}
-              style={{ maxWidth: '190px', flex: '1 1 160px', padding: '.55rem .85rem', fontSize: '1rem' }}
+              aria-label="Sort products"
+              style={{ maxWidth: '260px', flex: '1 1 200px', padding: '.55rem .85rem', fontSize: '1rem' }}
             >
               <option value="recommended">Sort by: Recommended</option>
               <option value="price-low">Price: Low to High</option>

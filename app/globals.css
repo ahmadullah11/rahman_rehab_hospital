@@ -456,9 +456,10 @@ section {
     gap: .35rem;
   }
   .nav-cta-desktop {
-    padding: .62rem .72rem;
-    font-size: .78rem;
+    padding: .6rem .65rem;
+    font-size: .76rem;
     gap: .3rem;
+    white-space: nowrap;
   }
 }
 
