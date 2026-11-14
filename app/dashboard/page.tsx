@@ -66,25 +66,25 @@ export default function DashboardPage() {
   return (
     <div className="min-h-screen bg-[var(--bg)] flex flex-col">
       {/* Top Header */}
-      <header className="bg-[var(--surface)] border-b border-[var(--border)] sticky top-0 z-30 px-6 py-4">
-        <div className="container flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <Link href="/" className="logo text-lg">
-              <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="1.8" className="w-6 h-6 text-[var(--primary)]">
+      <header className="bg-[var(--surface)] border-b border-[var(--border)] sticky top-0 z-30 px-4 sm:px-6 py-3 sm:py-4">
+        <div className="container flex items-center justify-between gap-2 sm:gap-3">
+          <div className="flex min-w-0 items-center gap-2 sm:gap-3">
+            <Link href="/" className="logo text-base sm:text-lg" style={{ whiteSpace: "nowrap" }}>
+              <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="1.8" className="w-5 h-5 sm:w-6 sm:h-6 text-[var(--primary)]">
                 <path d="M16 29V14" />
                 <path d="M16 18c-5 0-9-3.5-9-9 5 0 9 3.5 9 9z" />
                 <path d="M16 14c0-5 3.5-9 9-9 0 5-3.5 9-9 9z" />
               </svg>
-              Rahman Rehab Admin
+              <span>Rahman Rehab<span className="hidden sm:inline">&nbsp;Admin</span></span>
             </Link>
-            <span className="text-xs px-2.5 py-1 rounded-full bg-[var(--soft)] text-[var(--primary)] font-semibold">
+            <span className="hidden md:inline-flex text-xs px-2.5 py-1 rounded-full bg-[var(--soft)] text-[var(--primary)] font-semibold whitespace-nowrap">
               CRUD &amp; KPI Portal
             </span>
           </div>
 
-          <div className="flex items-center gap-3">
-            <Link href="/" className="btn btn-ghost" style={{ padding: "0.4rem 0.9rem", fontSize: "0.82rem" }}>
-              View Website
+          <div className="flex shrink-0 items-center gap-1.5 sm:gap-3">
+            <Link href="/" className="btn btn-ghost" style={{ padding: "0.4rem 0.6rem", fontSize: "0.78rem" }}>
+              <span className="hidden sm:inline">View&nbsp;</span>Website
             </Link>
             <button
               onClick={() => {
@@ -92,19 +92,20 @@ export default function DashboardPage() {
                 router.push("/login");
               }}
               className="btn btn-ghost text-red-500"
-              style={{ padding: "0.4rem 0.9rem", fontSize: "0.82rem" }}
+              aria-label="Logout"
+              style={{ padding: "0.4rem 0.6rem", fontSize: "0.78rem" }}
             >
-              <LogOut className="w-3.5 h-3.5 mr-1" />
-              Logout
+              <LogOut className="w-3.5 h-3.5 sm:mr-1" />
+              <span className="hidden sm:inline">Logout</span>
             </button>
           </div>
         </div>
       </header>
 
       {/* Main Content */}
-      <main className="container flex-1 py-8">
+      <main className="container flex-1 py-6 sm:py-8">
         {/* Navigation Tabs */}
-        <div className="flex items-center gap-2 overflow-x-auto pb-3 mb-8 border-b border-[var(--border)]">
+        <div className="flex flex-wrap items-center gap-2 pb-3 mb-6 sm:mb-8 border-b border-[var(--border)]">
           <button
             onClick={() => setActiveTab("kpis")}
             className={`btn ${activeTab === "kpis" ? "btn-primary" : "btn-ghost"}`}

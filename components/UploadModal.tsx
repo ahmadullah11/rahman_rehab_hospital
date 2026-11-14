@@ -96,18 +96,18 @@ export default function UploadModal({ isOpen = true, onClose, onUploadSuccess, o
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        padding: "20px",
+        padding: "1rem",
       }}
     >
       <div
         className="card"
         style={{
           maxWidth: "520px",
-          width: "100%",
+          width: "92vw",
           maxHeight: "90vh",
           overflowY: "auto",
           position: "relative",
-          padding: "2rem",
+          padding: "clamp(1.25rem, 5vw, 2rem)",
           background: "var(--surface)",
         }}
       >
